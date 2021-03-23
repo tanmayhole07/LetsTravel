@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "836024054698",
+    "project_id": "letstravel-a4e8f",
+    "storage_bucket": "letstravel-a4e8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836024054698:android:113d80d4b64758c63031d3",
+        "android_client_info": {
+          "package_name": "com.example.letstravel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836024054698-5ggq95rema6k0it3sd1kkhjbp9gcgtss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEpIr70N1ZxYpuddr7CCMOtt5V7_dPuV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836024054698-5ggq95rema6k0it3sd1kkhjbp9gcgtss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
