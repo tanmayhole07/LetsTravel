@@ -3,12 +3,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".User.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="#F5F7F7"
+       android:focusableInTouchMode="true">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/constraintLayout"
+           android:layout_width="0dp"
+           android:layout_height="180dp"
+           android:background="@drawable/home_bg"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent">
+
+
+           <TextView
+               android:id="@+id/textView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="24dp"
+               android:fontFamily="@font/poppins_light"
+               android:text="Find Your"
+               android:textColor="#FFFFFF"
+               android:textSize="18sp"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/textView2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:fontFamily="@font/poppins_light"
+               android:text="Next Destination"
+               android:textColor="#FFFFFF"
+               android:textSize="20sp"
+               app:layout_constraintStart_toStartOf="@+id/textView"
+               app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+           <ImageView
+               android:id="@+id/imageView"
+               android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:layout_marginTop="24dp"
+               android:layout_marginEnd="16dp"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:srcCompat="@drawable/profile" />
+
+           <EditText
+               android:id="@+id/editText"
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+               android:layout_marginTop="22dp"
+               android:background="@drawable/search_bg"
+               android:drawableLeft="@drawable/ic_search_black_24dp"
+               android:drawablePadding="16dp"
+               android:ems="10"
+               android:inputType="textPersonName"
+               android:paddingStart="16dp"
+               android:hint="Search Destinations"
+               android:textColor="#62878F"
+               app:layout_constraintEnd_toEndOf="@+id/imageView"
+               app:layout_constraintStart_toStartOf="@+id/textView2"
+               app:layout_constraintTop_toBottomOf="@+id/textView2" />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <TextView
+           android:id="@+id/textView3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="16dp"
+           android:layout_marginTop="16dp"
+           android:fontFamily="@font/poppins_medium"
+           android:text="Recent"
+           android:textColor="@android:color/background_dark"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+       <TextView
+           android:id="@+id/textView4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginEnd="16dp"
+           android:fontFamily="@font/poppins_medium"
+           android:text="See All"
+           android:textColor="@android:color/background_dark"
+           android:textSize="12sp"
+           app:layout_constraintBottom_toBottomOf="@+id/textView3"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/recent_recycler"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="8dp"
+           tools:listitem="@layout/recents_row_item"
+           android:visibility="invisible"
+           android:orientation="horizontal"
+           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+       <TextView
+           android:id="@+id/textView5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="16dp"
+           android:layout_marginTop="16dp"
+           android:fontFamily="@font/poppins_medium"
+           android:text="Top Places"
+           android:textColor="@android:color/background_dark"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/recent_recycler" />
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/top_places_recycler"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           android:layout_marginTop="8dp"
+           android:visibility="invisible"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/textView5"
+           app:layout_constraintVertical_bias="0.0"
+           tools:listitem="@layout/top_places_row_item" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
