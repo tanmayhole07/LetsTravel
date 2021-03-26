@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.PlaceDescriptionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:id="@+id/placeIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/textview_shape_transparent"
+                android:padding="1dp"
+                app:srcCompat="@drawable/admin_person_bg" />
+
+            <ImageView
+                android:id="@+id/backIv"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_back_blue"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/placeNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_below="@+id/placeIv"
+                android:layout_marginTop="16dp"
+                android:text="Mughal Gardens, Srinagar"
+                android:textColor="@android:color/background_dark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/ratingIv"
+                android:layout_below="@+id/placeIv"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_alignParentEnd="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/star" />
+
+            <TextView
+                android:id="@+id/ratingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/placeIv"
+                android:layout_toStartOf="@+id/ratingIv"
+                android:fontFamily="@font/poppins_light"
+                android:text="4.5"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/placeAvailablityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeNameTv"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Available flight :"
+                android:textColor="#044363"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/placeAvailablityTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeNameTv"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/placeAvailablityText"
+                android:fontFamily="@font/poppins_light"
+                android:text="18 April,  2020"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeAvailablityText"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Price range : "
+                android:textColor="#044363"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeAvailablityTv"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/priceText"
+                android:fontFamily="@font/poppins_light"
+                android:text="$3,00 - $8,00"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/AboutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceText"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="About :"
+                android:textColor="@android:color/background_dark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/aboutTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceText"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:paddingBottom="100dp"
+                android:text="                Gardens which have truly changed the face of the Mughal Empire is one of the most popular and the most visited tourist attractions of Srinagar."
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/startBookingBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/book_button_bg"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/poppins_light"
+        android:text="Start Booking Your Trip"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>

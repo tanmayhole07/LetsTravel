@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.AddPlaceActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@color/colorGreen"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <ImageView
+                android:id="@+id/placePicIv"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_shape_transparent"
+                android:src="@drawable/add_product_image" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProductName"
+                style="@style/parent"
+                android:layout_marginTop="30dp"
+                android:alpha=".6">
+
+                <EditText
+                    android:id="@+id/placeNameEt"
+                    style="@style/modifiedEditText"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="Enter Place Name"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputtDescriptionEt"
+                style="@style/parent"
+                android:layout_marginTop="2dp"
+                android:alpha=".6">
+
+                <EditText
+                    android:id="@+id/placeDescriptionEt"
+                    style="@style/modifiedEditText"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="Enter Place Description"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputCountryEt"
+                style="@style/parent"
+                android:layout_marginTop="2dp"
+                android:alpha=".6">
+
+                <EditText
+                    android:id="@+id/countrynNameEt"
+                    style="@style/modifiedEditText"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="Enter Country Name"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputAvailablityEt"
+                style="@style/parent"
+                android:layout_marginTop="2dp"
+                android:alpha=".6">
+
+                <EditText
+                    android:id="@+id/placeAvailablityEt"
+                    style="@style/modifiedEditText"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="Enter Place Availability"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPriceEt"
+                style="@style/parent"
+                android:layout_marginTop="2dp"
+                android:alpha=".6">
+
+                <EditText
+                    android:id="@+id/priceEt"
+                    style="@style/modifiedEditText"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="Enter Price, eg: 100rs/night"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/addPlaceBtn"
+                style="@style/loginButton"
+                android:layout_gravity="right"
+                android:layout_marginTop="50dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/primaryTextColor"
+                android:fontFamily="@font/poppins_light"
+                android:src="@drawable/ic_next_blue"
+                android:text="Add Trip"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
