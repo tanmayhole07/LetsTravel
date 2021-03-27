@@ -18,13 +18,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.HolderTopPlace>{
+public class AdapterPopularPlaces extends RecyclerView.Adapter<AdapterPopularPlaces.HolderTopPlace>{
 
     private Context context;
     public ArrayList<ModelTripPlaces> topPlacesArrayList;
     private String placeSection;
 
-    public AdapterTripPlaces(Context context, ArrayList<ModelTripPlaces> topPlacesArrayList, String placeSection) {
+    public AdapterPopularPlaces(Context context, ArrayList<ModelTripPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
         this.topPlacesArrayList = topPlacesArrayList;
         this.placeSection = placeSection;
@@ -32,14 +32,14 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
 
     @NonNull
     @Override
-    public HolderTopPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row_cardview, parent, false);
+    public AdapterPopularPlaces.HolderTopPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_popular_places, parent, false);
 
-        return new HolderTopPlace(view);
+        return new AdapterPopularPlaces.HolderTopPlace(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderTopPlace holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterPopularPlaces.HolderTopPlace holder, int position) {
 
         ModelTripPlaces modelTripPlaces = topPlacesArrayList.get(position);
         String placeName = modelTripPlaces.getPlaceName();
@@ -91,6 +91,5 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
 
         }
     }
-
 
 }

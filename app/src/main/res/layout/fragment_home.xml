@@ -107,7 +107,7 @@
            android:layout_width="0dp"
            android:layout_height="wrap_content"
            android:layout_marginTop="8dp"
-           tools:listitem="@layout/recents_row_item"
+           tools:listitem="@layout/row_cardview"
            android:visibility="visible"
            android:orientation="horizontal"
            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

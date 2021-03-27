@@ -6,10 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".Admin.PlaceDescriptionActivity">
 
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryLogin"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/toolbarTextView"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_lightltalic"
+            android:foregroundGravity="center_vertical"
+            android:text="Let's Travel"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/backIv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
+    </RelativeLayout>
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
 
@@ -18,31 +55,31 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
 
-            <ImageView
-                android:id="@+id/placeIv"
+            <RelativeLayout
+                android:id="@+id/placeRl"
                 android:layout_width="400dp"
-                android:layout_height="402dp"
-                android:layout_marginTop="16dp"
-                android:adjustViewBounds="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/textview_shape_transparent"
-                android:padding="1dp"
-                app:srcCompat="@drawable/admin_person_bg" />
+                android:layout_height="370dp">
 
-            <ImageView
-                android:id="@+id/backIv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_back_blue"
-                tools:ignore="VectorDrawableCompat" />
+                <ImageView
+                    android:id="@+id/placeIv"
+                    android:layout_width="350dp"
+                    android:layout_height="350dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="16dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/textview_shape_transparent"
+                    android:padding="1dp"
+                    app:srcCompat="@drawable/admin_person_bg" />
+
+            </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/placeNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/placeIv"
+                android:layout_below="@+id/placeRl"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Mughal Gardens, Srinagar"
@@ -54,7 +91,7 @@
                 android:id="@+id/ratingIv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_below="@+id/placeIv"
+                android:layout_below="@+id/placeRl"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +101,7 @@
                 android:id="@+id/ratingTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/placeIv"
+                android:layout_below="@+id/placeRl"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="2dp"
                 android:layout_toStartOf="@+id/ratingIv"
@@ -148,20 +185,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:layout_alignParentBottom="true"
-        android:gravity="bottom"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/editPlaceBtn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginEnd="5dp"
+            android:layout_weight="1"
             android:background="@drawable/book_button_bg"
             android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/poppins_light"
@@ -172,9 +209,9 @@
             android:id="@+id/deletePlaceBtn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
+            android:layout_weight="1"
             android:background="@drawable/book_button_bg"
             android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/poppins_light"

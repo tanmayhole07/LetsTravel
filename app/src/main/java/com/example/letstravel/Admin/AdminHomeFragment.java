@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
+import com.example.letstravel.Admin.Adapters.AdapterPopularPlaces;
 import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
 import com.example.letstravel.R;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +74,7 @@ public class AdminHomeFragment extends Fragment {
         }
     }
     private ArrayList<ModelTripPlaces> tripPlacesArrayList;
-    private AdapterTripPlaces adapterTripPlaces;
+    private AdapterPopularPlaces adapterPopularPlaces;
 
     private  ArrayList<ModelFavPlaces> favPlacesArrayList;
     private AdapterFavPlaces adapterFavPlaces;
@@ -125,12 +127,13 @@ public class AdminHomeFragment extends Fragment {
                         tripPlacesArrayList.clear();
                         for (DataSnapshot ds : snapshot.getChildren()){
                             ModelTripPlaces modelOngoingEvent = ds.getValue(ModelTripPlaces.class);
+                            Collections.shuffle(tripPlacesArrayList);
                             tripPlacesArrayList.add(modelOngoingEvent);
                         }
-                        adapterTripPlaces = new AdapterTripPlaces(getActivity(), tripPlacesArrayList, "TopPlaces");
+                        adapterPopularPlaces = new AdapterPopularPlaces(getActivity(), tripPlacesArrayList, "TopPlaces");
 //                        recentRv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                         popularPlaceRv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                        popularPlaceRv.setAdapter(adapterTripPlaces);
+                        popularPlaceRv.setAdapter(adapterPopularPlaces);
                     }
 
                     @Override
@@ -153,10 +156,12 @@ public class AdminHomeFragment extends Fragment {
                         favPlacesArrayList.clear();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             ModelFavPlaces modelFavPlaces = ds.getValue(ModelFavPlaces.class);
+                            Collections.shuffle(favPlacesArrayList);
                             favPlacesArrayList.add(modelFavPlaces);
                         }
                         adapterFavPlaces = new AdapterFavPlaces(getActivity(), favPlacesArrayList, "UserFavPlaces");
                         userFavRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
                         userFavRv.setAdapter(adapterFavPlaces);
 
                     }
