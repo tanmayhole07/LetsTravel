@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Admin.PlaceDescriptionActivity"></activity>
+        <activity android:name=".Admin.UserFavPlacesActivity"></activity>
+        <activity android:name=".Admin.PlaceDescriptionActivity" />
         <activity android:name=".Admin.AddPlaceActivity" />
         <activity android:name=".Admin.TopPlacesActivity" />
         <activity android:name=".DashboardAdmin" />

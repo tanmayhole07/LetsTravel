@@ -1,13 +1,13 @@
 package com.example.letstravel.Admin;
 
-public class ModelTopPlaces {
+public class ModelFavPlaces {
 
     String placeImage, placeName, placeDescription, countryName, placeAvailablity, price, timeStamp;
 
-    public ModelTopPlaces() {
+    public ModelFavPlaces() {
     }
 
-    public ModelTopPlaces(String placeImage, String placeName, String placeDescription, String countryName, String placeAvailablity, String price, String timeStamp) {
+    public ModelFavPlaces(String placeImage, String placeName, String placeDescription, String countryName, String placeAvailablity, String price, String timeStamp) {
         this.placeImage = placeImage;
         this.placeName = placeName;
         this.placeDescription = placeDescription;

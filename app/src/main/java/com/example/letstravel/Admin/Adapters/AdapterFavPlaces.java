@@ -11,20 +11,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.letstravel.Admin.ModelTopPlaces;
+import com.example.letstravel.Admin.ModelFavPlaces;
+import com.example.letstravel.Admin.ModelTripPlaces;
 import com.example.letstravel.Admin.PlaceDescriptionActivity;
 import com.example.letstravel.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterTopPlace extends RecyclerView.Adapter<AdapterTopPlace.HolderTopPlace>{
+public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.HolderFavPlace>{
 
     private Context context;
-    public ArrayList<ModelTopPlaces> topPlacesArrayList;
+    public ArrayList<ModelFavPlaces> topPlacesArrayList;
     private String placeSection;
 
-    public AdapterTopPlace(Context context, ArrayList<ModelTopPlaces> topPlacesArrayList, String placeSection) {
+    public AdapterFavPlaces(Context context, ArrayList<ModelFavPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
         this.topPlacesArrayList = topPlacesArrayList;
         this.placeSection = placeSection;
@@ -32,22 +33,22 @@ public class AdapterTopPlace extends RecyclerView.Adapter<AdapterTopPlace.Holder
 
     @NonNull
     @Override
-    public HolderTopPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recents_row_item, parent, false);
+    public HolderFavPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.top_places_row_item, parent, false);
 
-        return new HolderTopPlace(view);
+        return new HolderFavPlace(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderTopPlace holder, int position) {
+    public void onBindViewHolder(@NonNull HolderFavPlace holder, int position) {
 
-        ModelTopPlaces modelTopPlaces = topPlacesArrayList.get(position);
-        String placeName = modelTopPlaces.getPlaceName();
-        String placeDescription = modelTopPlaces.getPlaceDescription();
-        String countryName = modelTopPlaces.getCountryName();
-        String price = modelTopPlaces.getPrice();
-        String placeIv = modelTopPlaces.getPlaceImage();
-        String placeId = modelTopPlaces.getTimeStamp();
+        ModelFavPlaces modelTripPlaces = topPlacesArrayList.get(position);
+        String placeName = modelTripPlaces.getPlaceName();
+        String placeDescription = modelTripPlaces.getPlaceDescription();
+        String countryName = modelTripPlaces.getCountryName();
+        String price = modelTripPlaces.getPrice();
+        String placeIv = modelTripPlaces.getPlaceImage();
+        String placeId = modelTripPlaces.getTimeStamp();
 
         holder.placeNameTv.setText(placeName);
         holder.countryNameTv.setText(countryName);
@@ -69,6 +70,7 @@ public class AdapterTopPlace extends RecyclerView.Adapter<AdapterTopPlace.Holder
             }
         });
 
+
     }
 
     @Override
@@ -76,12 +78,12 @@ public class AdapterTopPlace extends RecyclerView.Adapter<AdapterTopPlace.Holder
         return topPlacesArrayList.size();
     }
 
-    class HolderTopPlace extends RecyclerView.ViewHolder {
+    class HolderFavPlace extends RecyclerView.ViewHolder {
 
         private ImageView placeIv;
         private TextView placeNameTv, countryNameTv, priceTv;
 
-        public HolderTopPlace(@NonNull View itemView) {
+        public HolderFavPlace(@NonNull View itemView) {
             super(itemView);
 
             placeNameTv = itemView.findViewById(R.id.placeNameTv);

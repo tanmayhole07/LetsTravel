@@ -20,10 +20,11 @@
 
             <ImageView
                 android:id="@+id/placeIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="402dp"
                 android:layout_marginTop="16dp"
                 android:adjustViewBounds="true"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/textview_shape_transparent"
                 android:padding="1dp"
                 app:srcCompat="@drawable/admin_person_bg" />

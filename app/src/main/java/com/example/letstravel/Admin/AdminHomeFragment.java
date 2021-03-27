@@ -14,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.letstravel.Admin.Adapters.AdapterTopPlace;
+import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
+import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
 import com.example.letstravel.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -70,11 +71,14 @@ public class AdminHomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private ArrayList<ModelTopPlaces> topPlacesArrayList;
-    private AdapterTopPlace adapterTopPlace;
+    private ArrayList<ModelTripPlaces> tripPlacesArrayList;
+    private AdapterTripPlaces adapterTripPlaces;
 
-    private TextView recentTitleTv, seeAllRecentTv, topPlacesTitleTv, seeAllTopPlacesTv;
-    private RecyclerView recentRv, top_placesRv;
+    private  ArrayList<ModelFavPlaces> favPlacesArrayList;
+    private AdapterFavPlaces adapterFavPlaces;
+
+    private TextView popularPlaceTitleTv, seeAllTopPlacesTv, userFavTitleTv, seeAllUserFavPlacesTv;
+    private RecyclerView popularPlaceRv, userFavRv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,43 +86,51 @@ public class AdminHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_admin_home, container, false);
 
-        recentTitleTv = view.findViewById(R.id.recentTitleTv);
-        seeAllRecentTv = view.findViewById(R.id.seeAllRecentTv);
-        topPlacesTitleTv = view.findViewById(R.id.topPlacesTitleTv);
+        popularPlaceTitleTv = view.findViewById(R.id.popularPlaceTitleTv);
         seeAllTopPlacesTv = view.findViewById(R.id.seeAllTopPlacesTv);
-        recentRv = view.findViewById(R.id.recentRv);
-        top_placesRv = view.findViewById(R.id.top_placesRv);
+        userFavTitleTv = view.findViewById(R.id.userFavTitleTv);
+        seeAllUserFavPlacesTv = view.findViewById(R.id.seeAllUserFavPlacesTv);
+        popularPlaceRv = view.findViewById(R.id.popularPlaceRv);
+        userFavRv = view.findViewById(R.id.userFavRv);
 
-        seeAllRecentTv.setOnClickListener(new View.OnClickListener() {
+        seeAllTopPlacesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), TopPlacesActivity.class));
             }
         });
 
+        seeAllUserFavPlacesTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), UserFavPlacesActivity.class));
+            }
+        });
+
         loadTopPlaces();
+        loadFavPlaces();
 
         return view;
     }
 
     private void loadTopPlaces() {
 
-        topPlacesArrayList = new ArrayList<>();
+        tripPlacesArrayList = new ArrayList<>();
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
         ref.child("TopPlaces")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        topPlacesArrayList.clear();
+                        tripPlacesArrayList.clear();
                         for (DataSnapshot ds : snapshot.getChildren()){
-                            ModelTopPlaces modelOngoingEvent = ds.getValue(ModelTopPlaces.class);
-                            topPlacesArrayList.add(modelOngoingEvent);
+                            ModelTripPlaces modelOngoingEvent = ds.getValue(ModelTripPlaces.class);
+                            tripPlacesArrayList.add(modelOngoingEvent);
                         }
-                        adapterTopPlace = new AdapterTopPlace(getActivity(), topPlacesArrayList, "TopPlaces");
+                        adapterTripPlaces = new AdapterTripPlaces(getActivity(), tripPlacesArrayList, "TopPlaces");
 //                        recentRv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                        recentRv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
-                        recentRv.setAdapter(adapterTopPlace);
+                        popularPlaceRv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                        popularPlaceRv.setAdapter(adapterTripPlaces);
                     }
 
                     @Override
@@ -128,4 +140,34 @@ public class AdminHomeFragment extends Fragment {
                 });
 
     }
+
+    private void loadFavPlaces() {
+
+        favPlacesArrayList = new ArrayList<>();
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+        ref.child("UserFavPlaces")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        favPlacesArrayList.clear();
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            ModelFavPlaces modelFavPlaces = ds.getValue(ModelFavPlaces.class);
+                            favPlacesArrayList.add(modelFavPlaces);
+                        }
+                        adapterFavPlaces = new AdapterFavPlaces(getActivity(), favPlacesArrayList, "UserFavPlaces");
+                        userFavRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                        userFavRv.setAdapter(adapterFavPlaces);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+    }
+
+
 }

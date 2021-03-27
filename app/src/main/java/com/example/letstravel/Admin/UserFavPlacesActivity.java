@@ -20,38 +20,40 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class TopPlacesActivity extends AppCompatActivity {
+public class UserFavPlacesActivity extends AppCompatActivity {
 
     FloatingActionButton addPlaceFab;
-    RecyclerView recentPlacesRv;
+    RecyclerView userFavPlacesRv;
 
-    String placeSection = "TopPlaces";
+    String placeSection = "UserFavPlaces";
 
     private ArrayList<ModelTripPlaces> tripPlacesArrayList;
     private AdapterTripPlaces adapterTripPlaces;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_top_places);
+        setContentView(R.layout.activity_user_fav_places);
 
-        recentPlacesRv = findViewById(R.id.recentPlacesRv);
+        userFavPlacesRv = findViewById(R.id.userFavPlacesRv);
         addPlaceFab = findViewById(R.id.addPlaceFab);
 
         addPlaceFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TopPlacesActivity.this, AddPlaceActivity.class));
-                Intent intent = new Intent(TopPlacesActivity.this, AddPlaceActivity.class);
-                intent.putExtra("placeSection",placeSection);
+                startActivity(new Intent(UserFavPlacesActivity.this, AddPlaceActivity.class));
+                Intent intent = new Intent(UserFavPlacesActivity.this, AddPlaceActivity.class);
+                intent.putExtra("placeSection", placeSection);
                 startActivity(intent);
             }
         });
 
-        loadTopPlaces();
+        loadFavPlaces();
+
     }
 
-    private void loadTopPlaces() {
+    private void loadFavPlaces() {
 
         tripPlacesArrayList = new ArrayList<>();
 
@@ -61,13 +63,13 @@ public class TopPlacesActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         tripPlacesArrayList.clear();
-                        for (DataSnapshot ds : snapshot.getChildren()){
+                        for (DataSnapshot ds : snapshot.getChildren()) {
                             ModelTripPlaces modelOngoingEvent = ds.getValue(ModelTripPlaces.class);
                             tripPlacesArrayList.add(modelOngoingEvent);
                         }
-                        adapterTripPlaces = new AdapterTripPlaces(TopPlacesActivity.this, tripPlacesArrayList, placeSection);
-                        recentPlacesRv.setLayoutManager(new GridLayoutManager(TopPlacesActivity.this, 2));
-                        recentPlacesRv.setAdapter(adapterTripPlaces);
+                        adapterTripPlaces = new AdapterTripPlaces(UserFavPlacesActivity.this, tripPlacesArrayList, placeSection);
+                        userFavPlacesRv.setLayoutManager(new GridLayoutManager(UserFavPlacesActivity.this, 2));
+                        userFavPlacesRv.setAdapter(adapterTripPlaces);
 
                     }
 
