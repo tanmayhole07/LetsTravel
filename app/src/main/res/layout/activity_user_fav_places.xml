@@ -25,7 +25,7 @@
             android:layout_centerVertical="true"
             android:fontFamily="@font/poppins_lightltalic"
             android:foregroundGravity="center_vertical"
-            android:text="Let's Travel"
+            android:text="User Fav Places"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:visibility="visible" />

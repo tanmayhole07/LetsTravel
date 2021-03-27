@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letstravel.Admin.FilterTrips;
 import com.example.letstravel.Admin.ModelFavPlaces;
 import com.example.letstravel.Admin.ModelTripPlaces;
 import com.example.letstravel.Admin.PlaceDescriptionActivity;
@@ -19,15 +22,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.HolderFavPlace>{
+public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.HolderFavPlace> implements Filterable {
 
     private Context context;
-    public ArrayList<ModelFavPlaces> topPlacesArrayList;
+    public ArrayList<ModelFavPlaces> topPlacesArrayList, filterList;
     private String placeSection;
+    private FilterTrips filter;
 
     public AdapterFavPlaces(Context context, ArrayList<ModelFavPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
         this.topPlacesArrayList = topPlacesArrayList;
+        this.filterList = topPlacesArrayList;
         this.placeSection = placeSection;
     }
 
@@ -76,6 +81,14 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
     @Override
     public int getItemCount() {
         return topPlacesArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new FilterTrips(this, filterList);
+        }
+        return filter;
     }
 
     class HolderFavPlace extends RecyclerView.ViewHolder {

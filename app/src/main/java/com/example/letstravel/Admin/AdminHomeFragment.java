@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
@@ -76,11 +79,13 @@ public class AdminHomeFragment extends Fragment {
     private ArrayList<ModelTripPlaces> tripPlacesArrayList;
     private AdapterPopularPlaces adapterPopularPlaces;
 
+
     private  ArrayList<ModelFavPlaces> favPlacesArrayList;
     private AdapterFavPlaces adapterFavPlaces;
 
     private TextView popularPlaceTitleTv, seeAllTopPlacesTv, userFavTitleTv, seeAllUserFavPlacesTv;
     private RecyclerView popularPlaceRv, userFavRv;
+    private EditText searchBarEt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +99,28 @@ public class AdminHomeFragment extends Fragment {
         seeAllUserFavPlacesTv = view.findViewById(R.id.seeAllUserFavPlacesTv);
         popularPlaceRv = view.findViewById(R.id.popularPlaceRv);
         userFavRv = view.findViewById(R.id.userFavRv);
+        searchBarEt = view.findViewById(R.id.searchBarEt);
+
+        searchBarEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                try {
+                    adapterFavPlaces.getFilter().filter(s);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         seeAllTopPlacesTv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +132,9 @@ public class AdminHomeFragment extends Fragment {
         seeAllUserFavPlacesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), UserFavPlacesActivity.class));
+
+
+
             }
         });
 

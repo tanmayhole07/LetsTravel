@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.example.letstravel.Admin.AdminAccountFragment;
 import com.example.letstravel.Admin.AdminHomeFragment;
+import com.example.letstravel.Admin.AdminTripsFragment;
 import com.example.letstravel.User.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,6 +41,9 @@ public class DashboardAdmin extends AppCompatActivity {
                             break;
                         case R.id.nav_search:
                             selectedFragment = new AdminAccountFragment();
+                            break;
+                        case R.id.nav_trips:
+                            selectedFragment = new AdminTripsFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letstravel.Admin.FilterTrips;
 import com.example.letstravel.Admin.ModelTripPlaces;
 import com.example.letstravel.Admin.PlaceDescriptionActivity;
 import com.example.letstravel.R;
@@ -18,15 +21,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.HolderTopPlace>{
+public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.HolderTopPlace> implements Filterable {
 
     private Context context;
-    public ArrayList<ModelTripPlaces> topPlacesArrayList;
+    public ArrayList<ModelTripPlaces> topPlacesArrayList, filterList;
     private String placeSection;
+    private FilterTrips filter;
 
     public AdapterTripPlaces(Context context, ArrayList<ModelTripPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
         this.topPlacesArrayList = topPlacesArrayList;
+        this.filterList = topPlacesArrayList;
         this.placeSection = placeSection;
     }
 
@@ -74,6 +79,14 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
     @Override
     public int getItemCount() {
         return topPlacesArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            //filter = new FilterTrips(this, filterList);
+        }
+        return filter;
     }
 
     class HolderTopPlace extends RecyclerView.ViewHolder {

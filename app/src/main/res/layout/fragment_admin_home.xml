@@ -40,98 +40,186 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
+            android:layout_height="180dp"
             android:layout_below="@+id/toolbar"
-            android:layout_height="match_parent">
+            android:background="@drawable/home_bg"
+            android:padding="16dp">
 
-            <RelativeLayout
-                android:id="@+id/Rl1"
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/header1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:fontFamily="@font/poppins_light"
+                android:text="Find Your"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/popularPlaceTitleTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Popular Places"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_light"
+                android:layout_below="@+id/header1"
+                android:text="Next Destination"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/profile" />
 
-                <TextView
-                    android:id="@+id/seeAllTopPlacesTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="9dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="See All"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/popularPlaceRv"
-                    android:layout_below="@+id/popularPlaceTitleTv"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:stackFromEnd="false"
-                    tools:listitem="@layout/row_popular_places" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <EditText
+                android:id="@+id/searchBarEt"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/Rl1">
-
-                <TextView
-                    android:id="@+id/userFavTitleTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="User Favourite Places"
-                    android:textColor="@android:color/background_dark"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/seeAllUserFavPlacesTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="See All"
-                    android:textColor="@android:color/background_dark"
-                    android:textSize="12sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/userFavRv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/userFavTitleTv"
-                    android:layout_marginTop="9dp"
-                    android:visibility="visible"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/top_places_row_item" />
-
-            </RelativeLayout>
-
+                android:layout_height="40dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/search_bg"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:drawablePadding="16dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingStart="16dp"
+                android:layout_marginBottom="5dp"
+                android:text="Search Destinations"
+                android:textColor="#62878F"
+                android:layout_alignParentBottom="true"/>
         </RelativeLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_below="@+id/toolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/Rl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/sectionRl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:id="@+id/popularPlaceTitleTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Popular Places"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                        <TextView
+                            android:id="@+id/seeAllTopPlacesTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="9dp"
+                            android:background="@drawable/textview_shape_transparent"
+                            android:fontFamily="@font/poppins_medium"
+                            android:paddingStart="10dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="10dp"
+                            android:text="See All"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/popularPlaceRv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sectionRl1"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:stackFromEnd="false"
+                        tools:listitem="@layout/row_popular_places" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/Rl1">
+
+                    <RelativeLayout
+                        android:id="@+id/sectionRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:id="@+id/userFavTitleTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="User Favourite Places"
+                            android:textColor="@android:color/white"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/seeAllUserFavPlacesTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/textview_shape_transparent"
+                            android:fontFamily="@font/poppins_medium"
+                            android:paddingStart="10dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="10dp"
+                            android:text="See All"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/userFavRv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sectionRl"
+                        android:layout_marginTop="9dp"
+                        android:paddingBottom="50dp"
+                        android:visibility="visible"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/top_places_row_item" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
 
     </RelativeLayout>
-
 
 
 </FrameLayout>
