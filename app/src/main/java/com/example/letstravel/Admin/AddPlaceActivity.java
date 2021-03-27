@@ -28,11 +28,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -40,7 +44,7 @@ import java.util.HashMap;
 
 public class AddPlaceActivity extends AppCompatActivity {
 
-    String placeSection;
+    String placeSection, placeId;
     private ImageView placePicIv;
     private EditText placeNameEt, placeDescriptionEt, countrynNameEt, placeAvailablityEt, priceEt;
     private Button addPlaceBtn;
@@ -59,6 +63,8 @@ public class AddPlaceActivity extends AppCompatActivity {
     private Uri image_uri;
     private ProgressDialog pd;
     String mUID = "uid";
+
+    private boolean isUpdating = false;
 
     //Firebase Variables
     FirebaseAuth firebaseAuth;
@@ -82,6 +88,21 @@ public class AddPlaceActivity extends AppCompatActivity {
         pd.setCanceledOnTouchOutside(false);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        Intent intent = getIntent();
+        if (intent.getStringExtra("placeId") != null) {
+            placeId = intent.getStringExtra("placeId");
+
+            //toolbarTextView.setText("Update Promotion Code");
+            addPlaceBtn.setText("Update");
+            isUpdating = true;
+            loadPlaceDescription();
+        } else {
+
+            //toolbarTextView.setText("Add Promotion Code");
+            addPlaceBtn.setText("Add");
+            isUpdating = false;
+        }
+
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -100,6 +121,47 @@ public class AddPlaceActivity extends AppCompatActivity {
         });
 
         checkUserStatus();
+    }
+
+    private void loadPlaceDescription() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+        ref.child(placeSection).child(placeId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String placeName = "" + snapshot.child("placeName").getValue();
+                String placeDescription = "" + snapshot.child("placeDescription").getValue();
+                String countryName = "" + snapshot.child("countryName").getValue();
+                String placeAvailablity = "" + snapshot.child("placeAvailablity").getValue();
+                String price = "" + snapshot.child("price").getValue();
+                String eventImage = "" + snapshot.child("placeImage").getValue();
+
+                placeNameEt.setText(placeName);
+                placeDescriptionEt.setText(""+placeDescription);
+                placeAvailablityEt.setText(placeAvailablity);
+                priceEt.setText(price);
+                countrynNameEt.setText(countryName);
+
+                try {
+                    Picasso.get().load(eventImage).into(placePicIv);
+                } catch (Exception e) {
+
+                }
+
+//                try {
+//                    Picasso.get().load(eventImage).placeholder(R.drawable.admin_person_bg).into(placeIv);
+//                } catch (Exception e) {
+//                    placeIv.setImageResource(R.drawable.admin_person_bg);
+//                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,7 +202,99 @@ public class AddPlaceActivity extends AppCompatActivity {
         }
 
 
-        addEvent();
+        if (isUpdating) {
+            updateDataToDb();
+        } else {
+            addEvent();
+        }
+
+
+    }
+
+    private void updateDataToDb() {
+        pd.setMessage("Updating Trip Info");
+        if (image_uri == null) {
+
+            //final String timeStamp = "" + System.currentTimeMillis();
+
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("placeName", "" + placeName);
+            hashMap.put("placeDescription", "" + placeDescription);
+            hashMap.put("countryName", "" + placeCountrynName);
+            hashMap.put("placeAvailablity", "" + placeAvailablity);
+            hashMap.put("price", "" + price);
+
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+            ref.child(placeSection).child(placeId)
+                    .updateChildren(hashMap)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            pd.dismiss();
+                            Toast.makeText(AddPlaceActivity.this, "Updated...", Toast.LENGTH_SHORT).show();
+                            onBackPressed();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
+                            Toast.makeText(AddPlaceActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            onBackPressed();
+                        }
+                    });
+        }else {
+            //final String timeStamp = "" + System.currentTimeMillis();
+
+            String filePathAndName = "event_images/" + "" + placeId;
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
+            storageReference.putFile(image_uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful()) ;
+                            Uri downloadImageUri = uriTask.getResult();
+
+                            if (uriTask.isSuccessful()) {
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("placeImage", "" + downloadImageUri);
+                                hashMap.put("placeName", "" + placeName);
+                                hashMap.put("placeDescription", "" + placeDescription);
+                                hashMap.put("countryName", "" + placeCountrynName);
+                                hashMap.put("placeAvailablity", "" + placeAvailablity);
+                                hashMap.put("price", "" + price);
+
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+                                ref.child(placeSection).child(placeId)
+                                        .updateChildren(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                pd.dismiss();
+                                                Toast.makeText(AddPlaceActivity.this, "Updated...", Toast.LENGTH_SHORT).show();
+                                                onBackPressed();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                pd.dismiss();
+                                                Toast.makeText(AddPlaceActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                onBackPressed();
+                                            }
+                                        });
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+        }
 
     }
 
@@ -165,7 +319,7 @@ public class AddPlaceActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             pd.dismiss();
-                            Toast.makeText(AddPlaceActivity.this, "Updated...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPlaceActivity.this, "Added ...", Toast.LENGTH_SHORT).show();
                             onBackPressed();
                         }
                     })
@@ -207,7 +361,7 @@ public class AddPlaceActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 pd.dismiss();
-                                                Toast.makeText(AddPlaceActivity.this, "Updated...", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(AddPlaceActivity.this, "Added...", Toast.LENGTH_SHORT).show();
                                                 onBackPressed();
                                             }
                                         })
