@@ -12,15 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="50dp"
             android:background="@drawable/home_bg"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            tools:ignore="MissingConstraints">
+            android:elevation="4dp">
 
             <TextView
                 android:id="@+id/toolbarTextView"
@@ -31,14 +29,12 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/poppins_lightltalic"
                 android:foregroundGravity="center_vertical"
-                android:text="Let's Travel"
+                android:text="Admin Profile"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
                 android:visibility="visible" />
 
-
         </RelativeLayout>
-
 
 
         <ScrollView
@@ -110,13 +106,15 @@
                     android:id="@+id/Rl1"
                     android:layout_width="match_parent"
                     android:layout_below="@id/RelativeLayout1"
+                    android:paddingBottom="10dp"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/sectionRl1"
                         android:layout_width="match_parent"
+                        android:elevation="4dp"
                         android:layout_height="50dp"
-                        android:background="@color/colorPrimary"
+                        android:background="@drawable/textview_shape_home_title"
                         android:gravity="center"
                         android:paddingTop="5dp">
 
@@ -145,7 +143,7 @@
                             android:paddingTop="2dp"
                             android:paddingEnd="10dp"
                             android:text="See All"
-                            android:textColor="@android:color/background_dark"
+                            android:textColor="@android:color/white"
                             android:textSize="12sp" />
 
                     </RelativeLayout>
@@ -156,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/sectionRl1"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:stackFromEnd="false"
@@ -173,7 +171,9 @@
                         android:id="@+id/sectionRl"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@color/colorPrimary"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="4dp"
+                        android:background="@drawable/textview_shape_home_title"
                         android:gravity="center"
                         android:paddingTop="5dp">
 
@@ -199,7 +199,7 @@
                             android:paddingTop="2dp"
                             android:paddingEnd="10dp"
                             android:text="See All"
-                            android:textColor="@android:color/background_dark"
+                            android:textColor="@android:color/white"
                             android:textSize="12sp" />
 
                     </RelativeLayout>
@@ -210,7 +210,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/sectionRl"
-                        android:layout_marginTop="9dp"
                         android:paddingBottom="50dp"
                         android:visibility="visible"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

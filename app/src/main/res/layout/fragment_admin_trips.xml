@@ -13,12 +13,9 @@
         <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryLogin"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            tools:ignore="MissingConstraints">
+            android:layout_height="50dp"
+            android:background="@drawable/home_bg"
+            android:elevation="4dp">
 
             <TextView
                 android:id="@+id/toolbarTextView"
@@ -29,20 +26,10 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/poppins_lightltalic"
                 android:foregroundGravity="center_vertical"
-                android:text="Trips"
+                android:text="Admin Profile"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
                 android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/backIv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_arrow_back_black_24dp"
-                tools:ignore="VectorDrawableCompat" />
 
         </RelativeLayout>
 
@@ -61,8 +48,8 @@
             android:layout_height="40dp"
             android:layout_below="@+id/toolbar"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/search_bg"
             android:drawableLeft="@drawable/ic_search_black_24dp"
