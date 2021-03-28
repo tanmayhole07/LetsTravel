@@ -125,6 +125,7 @@ public class AccountFragment extends Fragment {
 
     private ImageView profileIv;
     private TextView nameTv, emailTv, phoneTv, genderTv, editAdminInfoFab;
+    private TextView logoutBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -144,16 +145,24 @@ public class AccountFragment extends Fragment {
         emailTv = view.findViewById(R.id.emailTv);
         phoneTv = view.findViewById(R.id.phoneTv);
         genderTv = view.findViewById(R.id.genderTv);
+        logoutBtn = view.findViewById(R.id.logoutBtn);
 
         editAdminInfoFab = view.findViewById(R.id.editUserInfoFab);
 
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-
         databaseReference = firebaseDatabase.getReference("Users");
         databaseReference = firebaseDatabase.getReference("Users");
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
 
         editAdminInfoFab.setOnClickListener(new View.OnClickListener() {
             @Override

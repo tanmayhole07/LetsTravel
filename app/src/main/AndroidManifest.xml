@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".User.Activities.UserFavActivityUser"></activity>
+        <activity android:name=".User.Activities.BookTripActivityUser"></activity>
+        <activity android:name=".User.Activities.PlaceDescriptionActivityUser" />
+        <activity android:name=".User.Activities.UserFavActivityUser" />
         <activity android:name=".User.Activities.PopularPlacesActivityUser" />
         <activity android:name=".Admin.Activities.UserFavPlacesActivity" />
         <activity android:name=".Admin.Activities.PlaceDescriptionActivity" />

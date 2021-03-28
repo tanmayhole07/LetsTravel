@@ -17,6 +17,13 @@ import com.example.letstravel.Filters.FilterFacPlaces;
 import com.example.letstravel.Admin.Models.ModelFavPlaces;
 import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
 import com.example.letstravel.R;
+import com.example.letstravel.User.Activities.PlaceDescriptionActivityUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -27,6 +34,8 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
     public ArrayList<ModelFavPlaces> topPlacesArrayList, filterList;
     private String placeSection;
     private FilterFacPlaces filter;
+    FirebaseAuth firebaseAuth;
+
 
     public AdapterFavPlaces(Context context, ArrayList<ModelFavPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
@@ -39,7 +48,7 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
     @Override
     public HolderFavPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.top_places_row_item, parent, false);
-
+        firebaseAuth = FirebaseAuth.getInstance();
         return new HolderFavPlace(view);
     }
 
@@ -67,10 +76,32 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PlaceDescriptionActivity.class);
-                intent.putExtra("placeId", placeId);
-                intent.putExtra("placeSection",placeSection);
-                context.startActivity(intent);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot ds : snapshot.getChildren()){
+                                    String accountTye = ""+ds.child("accountTye").getValue();
+                                    if (accountTye.equals("Admin")){
+                                        Intent intent = new Intent(context, PlaceDescriptionActivity.class);
+                                        intent.putExtra("placeId", placeId);
+                                        intent.putExtra("placeSection",placeSection);
+                                        context.startActivity(intent);
+                                    }
+                                    else {
+                                        Intent intent = new Intent(context, PlaceDescriptionActivityUser.class);
+                                        intent.putExtra("placeId", placeId);
+                                        intent.putExtra("placeSection",placeSection);
+                                        context.startActivity(intent);
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
             }
         });
 

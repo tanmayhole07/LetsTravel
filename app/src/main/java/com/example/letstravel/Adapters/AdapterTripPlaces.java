@@ -13,10 +13,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letstravel.Admin.Activities.DashboardAdmin;
+import com.example.letstravel.DashboardUserActivity;
 import com.example.letstravel.Filters.FilterTrips;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
+import com.example.letstravel.LoginActivity;
 import com.example.letstravel.R;
+import com.example.letstravel.User.Activities.PlaceDescriptionActivityUser;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -27,6 +37,8 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
     public ArrayList<ModelTripPlaces> topPlacesArrayList, filterList;
     private String placeSection;
     private FilterTrips filter;
+
+    FirebaseAuth firebaseAuth;
 
     public AdapterTripPlaces(Context context, ArrayList<ModelTripPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
@@ -39,6 +51,7 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
     @Override
     public HolderTopPlace onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_cardview, parent, false);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         return new HolderTopPlace(view);
     }
@@ -67,10 +80,38 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PlaceDescriptionActivity.class);
-                intent.putExtra("placeId", placeId);
-                intent.putExtra("placeSection",placeSection);
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, PlaceDescriptionActivity.class);
+//                intent.putExtra("placeId", placeId);
+//                intent.putExtra("placeSection",placeSection);
+//                context.startActivity(intent);
+
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                ref.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot ds : snapshot.getChildren()){
+                                    String accountTye = ""+ds.child("accountTye").getValue();
+                                    if (accountTye.equals("Admin")){
+                                        Intent intent = new Intent(context, PlaceDescriptionActivity.class);
+                                        intent.putExtra("placeId", placeId);
+                                        intent.putExtra("placeSection",placeSection);
+                                        context.startActivity(intent);
+                                    }
+                                    else {
+                                        Intent intent = new Intent(context, PlaceDescriptionActivityUser.class);
+                                        intent.putExtra("placeId", placeId);
+                                        intent.putExtra("placeSection",placeSection);
+                                        context.startActivity(intent);
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
             }
         });
 
