@@ -16,8 +16,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
-import com.example.letstravel.Admin.Adapters.AdapterPopularPlaces;
+import com.example.letstravel.Admin.Activities.UserFavPlacesActivity;
+import com.example.letstravel.Adapters.AdapterFavPlaces;
+import com.example.letstravel.Adapters.AdapterPopularPlaces;
 import com.example.letstravel.Admin.Models.ModelFavPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.Admin.Activities.TopPlacesActivity;
@@ -139,7 +140,7 @@ public class AdminHomeFragment extends Fragment {
         seeAllUserFavPlacesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getActivity(), UserFavPlacesActivity.class));
             }
         });
 

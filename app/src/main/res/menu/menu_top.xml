@@ -6,21 +6,21 @@
     <item android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/ic_home_white"
-        app:cnb_backgroundColor="#ff785b"
+        app:cnb_backgroundColor="@color/colorBlue"
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff"/>
 
     <item android:id="@+id/account"
         android:title="Account"
         android:icon="@drawable/ic_person_white"
-        app:cnb_backgroundColor="#ff785b"
+        app:cnb_backgroundColor="@color/colorBlue"
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff"/>
 
     <item android:id="@+id/discover"
         android:title="Hotels"
         android:icon="@drawable/ic_discover_white"
-        app:cnb_backgroundColor="#ff785b"
+        app:cnb_backgroundColor="@color/colorBlue"
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff"/>
 

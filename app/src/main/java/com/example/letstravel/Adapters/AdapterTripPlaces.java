@@ -1,4 +1,4 @@
-package com.example.letstravel.Admin.Adapters;
+package com.example.letstravel.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.letstravel.Admin.FilterTrips;
+import com.example.letstravel.Filters.FilterTrips;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
 import com.example.letstravel.R;

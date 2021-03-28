@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".User.DiscoverTripsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/tripsRv"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@+id/searchBarEt"
+           android:orientation="horizontal"
+           app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+           tools:listitem="@layout/row_cardview" />
+
+       <EditText
+           android:id="@+id/searchBarEt"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           android:layout_below="@+id/toolbar"
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="5dp"
+           android:layout_marginBottom="5dp"
+           android:background="@drawable/search_bg"
+           android:drawableLeft="@drawable/ic_search_black_24dp"
+           android:drawablePadding="10dp"
+           android:ems="10"
+           android:hint="Search Destinations"
+           android:inputType="textPersonName"
+           android:paddingStart="16dp"
+           android:textColor="#62878F" />
+
+   </RelativeLayout>
+
+</FrameLayout>

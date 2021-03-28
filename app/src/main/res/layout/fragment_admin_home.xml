@@ -128,8 +128,7 @@
                             android:text="Popular Places"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                            app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
                             android:id="@+id/seeAllTopPlacesTv"

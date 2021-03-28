@@ -6,12 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".DashboardUserActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/home_bg"
+        android:elevation="10dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/toolbarTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_lightltalic"
+            android:foregroundGravity="center_vertical"
+            android:gravity="center"
+            android:maxLines="1"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="Let's Travel"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+    </androidx.appcompat.widget.Toolbar>
+
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/top_nav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/rounded"
+        android:background="@drawable/home_bg"
         android:elevation="5dp"
         android:padding="8dp"
         app:cnb_menuResource="@menu/menu_top" />
@@ -19,6 +47,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/top_nav"
+        android:layout_below="@+id/toolbar"
         android:id="@+id/fragment_container"/>
 
 

@@ -1,8 +1,8 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Filters;
 
 import android.widget.Filter;
 
-import com.example.letstravel.Admin.Adapters.AdapterPopularPlaces;
+import com.example.letstravel.Adapters.AdapterPopularPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 
 import java.util.ArrayList;

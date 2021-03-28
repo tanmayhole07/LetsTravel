@@ -1,6 +1,5 @@
-package com.example.letstravel.Admin.Fragments;
+package com.example.letstravel.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,10 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.letstravel.Adapters.AdapterTripPlaces;
-import com.example.letstravel.Admin.Activities.AddPlaceActivity;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,10 +28,10 @@ import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AdminTripsFragment#newInstance} factory method to
+ * Use the {@link DiscoverTripsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AdminTripsFragment extends Fragment {
+public class DiscoverTripsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,7 +42,7 @@ public class AdminTripsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AdminTripsFragment() {
+    public DiscoverTripsFragment() {
         // Required empty public constructor
     }
 
@@ -55,11 +52,11 @@ public class AdminTripsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AdminTripsFragment.
+     * @return A new instance of fragment DiscoverFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AdminTripsFragment newInstance(String param1, String param2) {
-        AdminTripsFragment fragment = new AdminTripsFragment();
+    public static DiscoverTripsFragment newInstance(String param1, String param2) {
+        DiscoverTripsFragment fragment = new DiscoverTripsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,7 +73,6 @@ public class AdminTripsFragment extends Fragment {
         }
     }
 
-    FloatingActionButton addPlaceFab;
     RecyclerView tripsRv;
     EditText searchBarEt;
     String placeSection = "Trips";
@@ -88,10 +84,9 @@ public class AdminTripsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_admin_trips, container, false);
+        View view = inflater.inflate(R.layout.fragment_discover_trips, container, false);
 
         tripsRv = view.findViewById(R.id.tripsRv);
-        addPlaceFab = view.findViewById(R.id.addPlaceFab);
         searchBarEt = view.findViewById(R.id.searchBarEt);
 
         searchBarEt.addTextChangedListener(new TextWatcher() {
@@ -113,16 +108,6 @@ public class AdminTripsFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
 
-            }
-        });
-
-        addPlaceFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), AddPlaceActivity.class));
-                Intent intent = new Intent(getActivity(), AddPlaceActivity.class);
-                intent.putExtra("placeSection",placeSection);
-                startActivity(intent);
             }
         });
 
@@ -167,4 +152,5 @@ public class AdminTripsFragment extends Fragment {
 
 
     }
+
 }

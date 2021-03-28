@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Adapters.AdapterTripPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

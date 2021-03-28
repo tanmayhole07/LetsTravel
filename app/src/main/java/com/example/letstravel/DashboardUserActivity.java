@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.letstravel.User.AccountFragment;
-import com.example.letstravel.User.DiscoverFragment;
+import com.example.letstravel.User.DiscoverTripsFragment;
 import com.example.letstravel.User.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -60,7 +60,7 @@ public class DashboardUserActivity extends AppCompatActivity {
                         fragment = new HomeFragment();
                         break;
                     case R.id.discover:
-                        fragment = new DiscoverFragment();
+                        fragment = new DiscoverTripsFragment();
                         break;
                     case R.id.account:
                         fragment = new AccountFragment();

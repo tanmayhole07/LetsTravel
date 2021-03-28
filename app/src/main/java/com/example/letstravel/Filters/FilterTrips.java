@@ -1,30 +1,30 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Filters;
 
 import android.widget.Filter;
 
-import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
-import com.example.letstravel.Admin.Models.ModelFavPlaces;
+import com.example.letstravel.Adapters.AdapterTripPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 
 import java.util.ArrayList;
 
-public class FilterFacPlaces extends Filter {
+public class FilterTrips extends Filter{
 
-    private AdapterFavPlaces adapter;
-    private ArrayList<ModelFavPlaces> filterList;
+    private AdapterTripPlaces adapterTrip;
+    private ArrayList<ModelTripPlaces> filterList;
 
-    public FilterFacPlaces(AdapterFavPlaces adapter, ArrayList<ModelFavPlaces> filterList) {
-        this.adapter = adapter;
+
+    public FilterTrips(AdapterTripPlaces adapter, ArrayList<ModelTripPlaces> filterList) {
+        this.adapterTrip = adapter;
         this.filterList = filterList;
     }
 
     @Override
-    protected FilterResults performFiltering(CharSequence charSequence) {
+    protected Filter.FilterResults performFiltering(CharSequence charSequence) {
         Filter.FilterResults results = new Filter.FilterResults();
         if (charSequence!=null && charSequence.length()>0){
             charSequence = charSequence.toString().toUpperCase();
 
-            ArrayList<ModelFavPlaces> filterModels = new ArrayList<>();
+            ArrayList<ModelTripPlaces> filterModels = new ArrayList<>();
             for (int i=0; i<filterList.size(); i++){
 
                 if (filterList.get(i).getPlaceName().toUpperCase().contains(charSequence) ||
@@ -43,14 +43,17 @@ public class FilterFacPlaces extends Filter {
         }
 
         return results;
+
     }
 
     @Override
     protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-        adapter.topPlacesArrayList = (ArrayList<ModelFavPlaces>)filterResults.values;
+        adapterTrip.topPlacesArrayList = (ArrayList<ModelTripPlaces>)filterResults.values;
 
-        adapter.notifyDataSetChanged();
+        adapterTrip.notifyDataSetChanged();
 
     }
+
+
 }
