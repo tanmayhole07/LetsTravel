@@ -2,24 +2,23 @@ package com.example.letstravel.Admin;
 
 import android.widget.Filter;
 
-import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Admin.Adapters.AdapterPopularPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 
 import java.util.ArrayList;
 
-public class FilterTrips extends Filter{
+public class FilterPopularPlaces  extends Filter {
 
-    private AdapterTripPlaces adapterTrip;
+    private AdapterPopularPlaces adapterPopularTrip;
     private ArrayList<ModelTripPlaces> filterList;
 
-
-    public FilterTrips(AdapterTripPlaces adapter, ArrayList<ModelTripPlaces> filterList) {
-        this.adapterTrip = adapter;
+    public FilterPopularPlaces(AdapterPopularPlaces adapter, ArrayList<ModelTripPlaces> filterList) {
+        this.adapterPopularTrip = adapter;
         this.filterList = filterList;
     }
 
     @Override
-    protected Filter.FilterResults performFiltering(CharSequence charSequence) {
+    protected FilterResults performFiltering(CharSequence charSequence) {
         Filter.FilterResults results = new Filter.FilterResults();
         if (charSequence!=null && charSequence.length()>0){
             charSequence = charSequence.toString().toUpperCase();
@@ -43,17 +42,14 @@ public class FilterTrips extends Filter{
         }
 
         return results;
-
     }
 
     @Override
     protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-        adapterTrip.topPlacesArrayList = (ArrayList<ModelTripPlaces>)filterResults.values;
+        adapterPopularTrip.topPlacesArrayList =  (ArrayList<ModelTripPlaces>)filterResults.values;
 
-        adapterTrip.notifyDataSetChanged();
+        adapterPopularTrip.notifyDataSetChanged();
 
     }
-
-
 }

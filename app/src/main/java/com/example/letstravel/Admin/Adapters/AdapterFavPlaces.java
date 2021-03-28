@@ -13,10 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letstravel.Admin.FilterFacPlaces;
+import com.example.letstravel.Admin.FilterPopularPlaces;
 import com.example.letstravel.Admin.FilterTrips;
-import com.example.letstravel.Admin.ModelFavPlaces;
-import com.example.letstravel.Admin.ModelTripPlaces;
-import com.example.letstravel.Admin.PlaceDescriptionActivity;
+import com.example.letstravel.Admin.Models.ModelFavPlaces;
+import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
 import com.example.letstravel.R;
 import com.squareup.picasso.Picasso;
 
@@ -27,7 +28,7 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
     private Context context;
     public ArrayList<ModelFavPlaces> topPlacesArrayList, filterList;
     private String placeSection;
-    private FilterTrips filter;
+    private FilterFacPlaces filter;
 
     public AdapterFavPlaces(Context context, ArrayList<ModelFavPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
@@ -86,10 +87,18 @@ public class AdapterFavPlaces extends RecyclerView.Adapter<AdapterFavPlaces.Hold
     @Override
     public Filter getFilter() {
         if (filter == null) {
-            filter = new FilterTrips(this, filterList);
+            filter = new FilterFacPlaces(this, filterList);
         }
         return filter;
     }
+
+//    @Override
+//    public Filter getFilter() {
+//        if (filter == null) {
+//            filter = new FilterTrips(this, filterList);
+//        }
+//        return filter;
+//    }
 
     class HolderFavPlace extends RecyclerView.ViewHolder {
 

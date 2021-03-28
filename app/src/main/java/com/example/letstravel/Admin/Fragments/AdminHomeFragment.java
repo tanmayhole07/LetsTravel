@@ -1,11 +1,10 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Admin.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +18,9 @@ import android.widget.TextView;
 
 import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
 import com.example.letstravel.Admin.Adapters.AdapterPopularPlaces;
-import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Admin.Models.ModelFavPlaces;
+import com.example.letstravel.Admin.Models.ModelTripPlaces;
+import com.example.letstravel.Admin.Activities.TopPlacesActivity;
 import com.example.letstravel.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -110,6 +111,12 @@ public class AdminHomeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
                 try {
+                    adapterPopularPlaces.getFilter().filter(s);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+                try {
                     adapterFavPlaces.getFilter().filter(s);
                 }catch (Exception e){
                     e.printStackTrace();
@@ -132,8 +139,6 @@ public class AdminHomeFragment extends Fragment {
         seeAllUserFavPlacesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
 
             }
         });

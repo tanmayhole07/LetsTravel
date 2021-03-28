@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.AdminHomeFragment">
+    tools:context=".Admin.Fragments.AdminHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimaryLogin"
+            android:background="@drawable/home_bg"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -39,74 +39,77 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_below="@+id/toolbar"
-            android:background="@drawable/home_bg"
-            android:padding="16dp">
 
-
-            <TextView
-                android:id="@+id/header1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
-                android:text="Find Your"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_light"
-                android:layout_below="@+id/header1"
-                android:text="Next Destination"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"/>
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/profile" />
-
-            <EditText
-                android:id="@+id/searchBarEt"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="22dp"
-                android:background="@drawable/search_bg"
-                android:drawableLeft="@drawable/ic_search_black_24dp"
-                android:drawablePadding="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingStart="16dp"
-                android:layout_marginBottom="5dp"
-                android:text="Search Destinations"
-                android:textColor="#62878F"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             android:layout_below="@+id/toolbar">
+
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/RelativeLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/home_bg"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:id="@+id/header1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Find Your"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:layout_below="@+id/header1"
+                        android:text="Next Destination"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"/>
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_alignParentEnd="true"
+                        app:srcCompat="@drawable/profile" />
+
+                    <EditText
+                        android:id="@+id/searchBarEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="22dp"
+                        android:background="@drawable/search_bg"
+                        android:drawableLeft="@drawable/ic_search_black_24dp"
+                        android:drawablePadding="16dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:paddingStart="16dp"
+                        android:layout_marginBottom="5dp"
+                        android:hint="Search Destinations"
+                        android:textColor="#62878F"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/Rl1"
                     android:layout_width="match_parent"
+                    android:layout_below="@id/RelativeLayout1"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout

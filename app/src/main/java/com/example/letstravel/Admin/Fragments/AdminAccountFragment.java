@@ -1,4 +1,4 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Admin.Fragments;
 
 import android.os.Bundle;
 

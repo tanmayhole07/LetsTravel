@@ -16,11 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Admin.UserFavPlacesActivity"></activity>
-        <activity android:name=".Admin.PlaceDescriptionActivity" />
-        <activity android:name=".Admin.AddPlaceActivity" />
-        <activity android:name=".Admin.TopPlacesActivity" />
-        <activity android:name=".DashboardAdmin" />
+        <activity android:name=".Admin.Activities.UserFavPlacesActivity"></activity>
+        <activity android:name=".Admin.Activities.PlaceDescriptionActivity" />
+        <activity android:name=".Admin.Activities.AddPlaceActivity" />
+        <activity android:name=".Admin.Activities.TopPlacesActivity" />
+        <activity android:name=".Admin.Activities.DashboardAdmin" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"

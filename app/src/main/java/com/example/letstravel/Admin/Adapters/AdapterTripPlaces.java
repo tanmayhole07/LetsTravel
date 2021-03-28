@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letstravel.Admin.FilterTrips;
-import com.example.letstravel.Admin.ModelTripPlaces;
-import com.example.letstravel.Admin.PlaceDescriptionActivity;
+import com.example.letstravel.Admin.Models.ModelTripPlaces;
+import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
 import com.example.letstravel.R;
 import com.squareup.picasso.Picasso;
 
@@ -84,7 +84,7 @@ public class AdapterTripPlaces extends RecyclerView.Adapter<AdapterTripPlaces.Ho
     @Override
     public Filter getFilter() {
         if (filter == null) {
-            //filter = new FilterTrips(this, filterList);
+            filter = new FilterTrips(this, filterList);
         }
         return filter;
     }

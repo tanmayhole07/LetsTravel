@@ -1,4 +1,4 @@
-package com.example.letstravel;
+package com.example.letstravel.Admin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.letstravel.Admin.AdminAccountFragment;
-import com.example.letstravel.Admin.AdminHomeFragment;
-import com.example.letstravel.Admin.AdminTripsFragment;
-import com.example.letstravel.User.HomeFragment;
+import com.example.letstravel.Admin.Fragments.AdminAccountFragment;
+import com.example.letstravel.Admin.Fragments.AdminHomeFragment;
+import com.example.letstravel.Admin.Fragments.AdminTripsFragment;
+import com.example.letstravel.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardAdmin extends AppCompatActivity {

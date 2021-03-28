@@ -1,4 +1,4 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Admin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

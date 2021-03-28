@@ -1,4 +1,4 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Admin.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Admin.Activities.AddPlaceActivity;
+import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -73,7 +78,7 @@ public class AdminTripsFragment extends Fragment {
 
     FloatingActionButton addPlaceFab;
     RecyclerView tripsRv;
-
+    EditText searchBarEt;
     String placeSection = "Trips";
 
     private ArrayList<ModelTripPlaces> tripPlacesArrayList;
@@ -87,6 +92,29 @@ public class AdminTripsFragment extends Fragment {
 
         tripsRv = view.findViewById(R.id.tripsRv);
         addPlaceFab = view.findViewById(R.id.addPlaceFab);
+        searchBarEt = view.findViewById(R.id.searchBarEt);
+
+        searchBarEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                try {
+                    adapterTripPlaces.getFilter().filter(s);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         addPlaceFab.setOnClickListener(new View.OnClickListener() {
             @Override

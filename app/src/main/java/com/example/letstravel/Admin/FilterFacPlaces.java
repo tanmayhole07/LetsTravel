@@ -2,29 +2,29 @@ package com.example.letstravel.Admin;
 
 import android.widget.Filter;
 
-import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Admin.Adapters.AdapterFavPlaces;
+import com.example.letstravel.Admin.Models.ModelFavPlaces;
 import com.example.letstravel.Admin.Models.ModelTripPlaces;
 
 import java.util.ArrayList;
 
-public class FilterTrips extends Filter{
+public class FilterFacPlaces extends Filter {
 
-    private AdapterTripPlaces adapterTrip;
-    private ArrayList<ModelTripPlaces> filterList;
+    private AdapterFavPlaces adapter;
+    private ArrayList<ModelFavPlaces> filterList;
 
-
-    public FilterTrips(AdapterTripPlaces adapter, ArrayList<ModelTripPlaces> filterList) {
-        this.adapterTrip = adapter;
+    public FilterFacPlaces(AdapterFavPlaces adapter, ArrayList<ModelFavPlaces> filterList) {
+        this.adapter = adapter;
         this.filterList = filterList;
     }
 
     @Override
-    protected Filter.FilterResults performFiltering(CharSequence charSequence) {
+    protected FilterResults performFiltering(CharSequence charSequence) {
         Filter.FilterResults results = new Filter.FilterResults();
         if (charSequence!=null && charSequence.length()>0){
             charSequence = charSequence.toString().toUpperCase();
 
-            ArrayList<ModelTripPlaces> filterModels = new ArrayList<>();
+            ArrayList<ModelFavPlaces> filterModels = new ArrayList<>();
             for (int i=0; i<filterList.size(); i++){
 
                 if (filterList.get(i).getPlaceName().toUpperCase().contains(charSequence) ||
@@ -43,17 +43,14 @@ public class FilterTrips extends Filter{
         }
 
         return results;
-
     }
 
     @Override
     protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-        adapterTrip.topPlacesArrayList = (ArrayList<ModelTripPlaces>)filterResults.values;
+        adapter.topPlacesArrayList = (ArrayList<ModelFavPlaces>)filterResults.values;
 
-        adapterTrip.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
 
     }
-
-
 }

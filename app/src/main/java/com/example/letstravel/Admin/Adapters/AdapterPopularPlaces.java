@@ -5,28 +5,34 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.letstravel.Admin.ModelTripPlaces;
-import com.example.letstravel.Admin.PlaceDescriptionActivity;
+import com.example.letstravel.Admin.FilterPopularPlaces;
+import com.example.letstravel.Admin.FilterTrips;
+import com.example.letstravel.Admin.Models.ModelTripPlaces;
+import com.example.letstravel.Admin.Activities.PlaceDescriptionActivity;
 import com.example.letstravel.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterPopularPlaces extends RecyclerView.Adapter<AdapterPopularPlaces.HolderTopPlace>{
+public class AdapterPopularPlaces extends RecyclerView.Adapter<AdapterPopularPlaces.HolderTopPlace> implements Filterable {
 
     private Context context;
-    public ArrayList<ModelTripPlaces> topPlacesArrayList;
+    public ArrayList<ModelTripPlaces> topPlacesArrayList, filterList;
     private String placeSection;
+    private FilterPopularPlaces filter;
 
     public AdapterPopularPlaces(Context context, ArrayList<ModelTripPlaces> topPlacesArrayList, String placeSection) {
         this.context = context;
         this.topPlacesArrayList = topPlacesArrayList;
+        this.filterList = topPlacesArrayList;
         this.placeSection = placeSection;
     }
 
@@ -74,6 +80,14 @@ public class AdapterPopularPlaces extends RecyclerView.Adapter<AdapterPopularPla
     @Override
     public int getItemCount() {
         return topPlacesArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new FilterPopularPlaces(this, filterList);
+        }
+        return filter;
     }
 
     class HolderTopPlace extends RecyclerView.ViewHolder {

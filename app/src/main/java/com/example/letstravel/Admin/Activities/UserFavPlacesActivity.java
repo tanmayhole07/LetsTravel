@@ -1,4 +1,4 @@
-package com.example.letstravel.Admin;
+package com.example.letstravel.Admin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.letstravel.Admin.Adapters.AdapterTripPlaces;
+import com.example.letstravel.Admin.Models.ModelTripPlaces;
 import com.example.letstravel.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
