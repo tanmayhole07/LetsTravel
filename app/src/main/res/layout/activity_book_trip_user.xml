@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".User.Activities.BookTripActivityUser">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_book_trip_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <include layout="@layout/layout_book_trip_1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_book_trip_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:gravity="center">
+
+        <include layout="@layout/layout_book_trip_2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 </RelativeLayout>
