@@ -63,6 +63,7 @@ public class BookTripActivityUser extends AppCompatActivity {
     private ProgressDialog pd;
     String mUID = "uid";
     FirebaseAuth firebaseAuth;
+    private String placeName;
 
 
     @Override
@@ -197,6 +198,7 @@ public class BookTripActivityUser extends AppCompatActivity {
         hashMap.put("bookedByEmail", "" + email);
         hashMap.put("bookedByNoOfPeople", "" + no_ofPeople);
         hashMap.put("timeStamp", "" + timeStamp);
+        hashMap.put("tripDestination", "" + placeId);
 
         hashMap.put("person11Name", "" + pName1);
         hashMap.put("person2Name", "" + pName2);
@@ -230,7 +232,7 @@ public class BookTripActivityUser extends AppCompatActivity {
                                 toast.show();
 
                             }
-                        }, 1000);
+                        }, 5000);
 
                         onBackPressed();
                     }
@@ -246,22 +248,6 @@ public class BookTripActivityUser extends AppCompatActivity {
 
     }
 
-    public void show(){
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_update_password, null);
-        final EditText passwordEt = view.findViewById(R.id.passwordEt);
-        final EditText newPasswordEt = view.findViewById(R.id.newPasswordEt);
-        Button updatePasswordBtn = view.findViewById(R.id.updatePasswordBtn);
-
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-        builder.setView(view);
-
-        android.app.AlertDialog dialog = builder.create();
-        dialog.show();
-
-
-
-        dialog.dismiss();
-    }
 
     private void loadUserData() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -288,6 +274,9 @@ public class BookTripActivityUser extends AppCompatActivity {
                     }
                 });
     }
+
+
+
 
 
 }

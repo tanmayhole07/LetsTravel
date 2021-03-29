@@ -141,8 +141,8 @@
                     android:id="@+id/no_ofPeopleEt"
                     style="@style/modifiedEditText"
                     android:fontFamily="@font/poppins_light"
-                    android:hint="@string/login_email_hint"
-                    android:inputType="textEmailAddress"
+                    android:hint="Enter number of people Accompanying"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
