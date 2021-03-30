@@ -127,6 +127,8 @@ public class AdminAccountFragment extends Fragment {
     private ImageView profileIv;
     private TextView nameTv, emailTv, phoneTv, genderTv, editAdminInfoFab;
     private ImageButton backBtn;
+    private TextView logoutBtn;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -141,6 +143,8 @@ public class AdminAccountFragment extends Fragment {
         user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        logoutBtn = view.findViewById(R.id.logoutBtn);
+
         profileIv = view.findViewById(R.id.profileIv);
         nameTv = view.findViewById(R.id.nameTv);
         emailTv = view.findViewById(R.id.emailTv);
@@ -152,6 +156,14 @@ public class AdminAccountFragment extends Fragment {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
 
         databaseReference = firebaseDatabase.getReference("Users");
         databaseReference = firebaseDatabase.getReference("Users");

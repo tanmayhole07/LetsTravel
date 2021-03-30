@@ -200,7 +200,7 @@ public class BookTripActivityUser extends AppCompatActivity {
         hashMap.put("timeStamp", "" + timeStamp);
         hashMap.put("tripDestination", "" + placeId);
 
-        hashMap.put("person11Name", "" + pName1);
+        hashMap.put("person1Name", "" + pName1);
         hashMap.put("person2Name", "" + pName2);
         hashMap.put("person3Name", "" + pName3);
         hashMap.put("person4Name", "" + pName4);
@@ -232,7 +232,7 @@ public class BookTripActivityUser extends AppCompatActivity {
                                 toast.show();
 
                             }
-                        }, 5000);
+                        }, 3000);
 
                         onBackPressed();
                     }
