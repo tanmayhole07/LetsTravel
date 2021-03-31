@@ -199,6 +199,7 @@ public class BookTripActivityUser extends AppCompatActivity {
         hashMap.put("bookedByNoOfPeople", "" + no_ofPeople);
         hashMap.put("timeStamp", "" + timeStamp);
         hashMap.put("tripDestination", "" + placeId);
+        hashMap.put("placeSection", ""+placeSection);
 
         hashMap.put("person1Name", "" + pName1);
         hashMap.put("person2Name", "" + pName2);

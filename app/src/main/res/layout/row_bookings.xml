@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardCornerRadius="6dp"
+        android:elevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/bookerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlue"
+                android:text="Booker Name"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/bookerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booker email"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="12sp"
+                android:layout_below="@+id/bookerName"/>
+
+            <TextView
+                android:id="@+id/bookerPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Booker Phone"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="12sp"
+                android:layout_below="@+id/bookerEmail"/>
+
+            <TextView
+                android:id="@+id/totalNoOfBookings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booker email"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="12sp"
+                android:layout_alignParentEnd="true"/>
+
+            <TextView
+                android:id="@+id/tripName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:gravity="end"
+                android:textColor="@color/colorBlue"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_toEndOf="@+id/bookerEmail"
+                android:layout_below="@+id/bookerEmail"
+                android:layout_alignParentEnd="true"
+                android:text="Trip Name"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

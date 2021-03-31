@@ -19,5 +19,12 @@
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff"/>
 
+    <item android:id="@+id/nav_bookings"
+        android:title="Bookings"
+        android:icon="@drawable/ic_book_white"
+        app:cnb_backgroundColor="#ff785b"
+        app:cnb_iconColor="#fff"
+        app:cnb_textColor="#fff"/>
+
 
 </menu>

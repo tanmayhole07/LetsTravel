@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.letstravel.Admin.Fragments.AdminAccountFragment;
+import com.example.letstravel.Admin.Fragments.AdminBookingsFragment;
 import com.example.letstravel.Admin.Fragments.AdminHomeFragment;
 import com.example.letstravel.Admin.Fragments.AdminTripsFragment;
 import com.example.letstravel.R;
@@ -44,6 +45,10 @@ public class DashboardAdmin extends AppCompatActivity {
                             break;
                         case R.id.nav_trips:
                             selectedFragment = new AdminTripsFragment();
+                            break;
+
+                        case R.id.nav_bookings:
+                            selectedFragment = new AdminBookingsFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
