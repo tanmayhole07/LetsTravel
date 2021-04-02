@@ -42,6 +42,7 @@ public class PopularPlacesActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_popular_places_user);
 
         recentPlacesRv = findViewById(R.id.recentPlacesRv);
+
         searchBarEt = findViewById(R.id.searchBarEt);
 
         searchBarEt.addTextChangedListener(new TextWatcher() {

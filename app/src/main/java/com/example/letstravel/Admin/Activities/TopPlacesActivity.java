@@ -28,6 +28,7 @@ public class TopPlacesActivity extends AppCompatActivity {
 
     String placeSection = "TopPlaces";
 
+
     private ArrayList<ModelTripPlaces> tripPlacesArrayList;
     private AdapterTripPlaces adapterTripPlaces;
 

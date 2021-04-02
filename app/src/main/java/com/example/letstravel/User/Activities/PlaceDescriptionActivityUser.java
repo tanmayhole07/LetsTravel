@@ -28,6 +28,7 @@ public class PlaceDescriptionActivityUser extends AppCompatActivity {
     String placeSection, placeId;
 
     private ProgressDialog pd;
+
     FirebaseAuth firebaseAuth;
 
     @Override

@@ -15,6 +15,7 @@ public class ModelFavPlaces {
         this.placeAvailablity = placeAvailablity;
         this.price = price;
         this.timeStamp = timeStamp;
+
     }
 
     public String getPlaceImage() {

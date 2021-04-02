@@ -25,6 +25,7 @@ public class BookingDescriptionActivity extends AppCompatActivity {
     private TextView nameTv1, ageTv1, nameTv2, ageTv2, nameTv3, ageTv3, nameTv4, ageTv4, nameTv5, ageTv5;
 
     private ArrayList<ModelBooking> bookingArrayList;
+
     private AdapterBookings adapterBookings;
 
     String p1name, p2name, p3name, p4name, p5name, p1age, p2age, p3age, p4age, p5age;
