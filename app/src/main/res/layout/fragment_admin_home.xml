@@ -85,7 +85,7 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_alignParentEnd="true"
-                        app:srcCompat="@drawable/profile" />
+                        app:srcCompat="@drawable/icon_2" />
 
                     <EditText
                         android:id="@+id/searchBarEt"
@@ -116,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:elevation="4dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/textview_shape_home_title"
+                        android:background="@drawable/home_bg"
                         android:gravity="center"
                         android:paddingTop="5dp">
 
@@ -174,7 +174,7 @@
                         android:layout_height="50dp"
                         android:layout_marginBottom="10dp"
                         android:elevation="4dp"
-                        android:background="@drawable/textview_shape_home_title"
+                        android:background="@drawable/home_bg"
                         android:gravity="center"
                         android:paddingTop="5dp">
 
